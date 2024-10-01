@@ -1,5 +1,11 @@
 \ProvidesPackage{lgsbreif} % Provides the package name
 
+% here, you can fill in, your specifics for your group's letter
+\newcommand{\gruppennumm}{Saint Jean Diddeleng}
+\newcommand{\gruppenemail}{lgsdudelange@pt.lu}
+\newcommand{\gruppenaddress}{Rue Mont St Jean Dudelange}
+\newcommand{\logodatei}{FDL_STJEAN}% file extension is not needed in the name
+
 % Load required packages
 \usepackage[a4paper, top=1.5cm, left=27mm, right=15mm, bottom=8cm]{geometry} % Adjust margins
 \usepackage{fancyhdr} % For custom headers and footers
@@ -7,26 +13,42 @@
 \usepackage{xcolor}   % For defining custom colors
 \usepackage{lipsum}   % For dummy text (optional)
 \usepackage{hyperref} % For clickable links
+\usepackage{titlesec} % For formatting section titles
+\usepackage{enumitem}%for list customization
 
 % Define custom colors using RGB values converted from 0-255 range
 \definecolor{hellblo}{rgb}{0.082, 0.671, 0.627} % Correctly defined RGB values (21, 171, 160)
-\definecolor{gro}{rgb}{0.475, 0.475, 0.475}
-\definecolor{donkelblo}{rgb}{0.165, 0.012, 0.522}
-\definecolor{giel}{rgb}{0.973, 0.965, 0.286}
+\definecolor{gro}{rgb}{0.475, 0.475, 0.475}     % Gray color
+\definecolor{donkelblo}{rgb}{0.165, 0.012, 0.522} % Dark blue
+\definecolor{giel}{rgb}{0.973, 0.965, 0.286}    % Yellow
+
+% Customize bullet points to be in the color of donkelblo
+\setlist[itemize,1]{label=\textcolor{donkelblo}{\textbullet}, labelsep=1em}  % Custom bullet color
+\setlist[itemize,2]{label=\textcolor{donkelblo}{--}, labelsep=1em} 
+\setlist[itemize,3]{label=\textcolor{donkelblo}{$>$}, labelsep=1em} 
+
+
+% Title formatting for sections
+\titleformat{\section}
+{\color{donkelblo}\bfseries\fontsize{19}{20}\selectfont}  % 19pt section title
+{\thesection}{1em}{}  % Section numbering and spacing
+
+\titleformat{\subsection}
+{\color{hellblo}\bfseries\fontsize{14}{20}\selectfont}  % 14pt subsection title
+{\thesubsection}{1em}{}  % Subsection numbering and spacing
+
+\titleformat{\subsubsection}
+{\color{hellblo}\bfseries\fontsize{12}{20}\selectfont}  % 12pt subsubsection title
+{\thesubsubsection}{1em}{}  % Subsubsection numbering and spacing
 
 % Set up hyperlink colors to match the text color and remove the box
 \hypersetup{
 	colorlinks=true,      % Enable colored links
 	linkcolor=gro,        % Color for internal links (e.g., table of contents)
-	urlcolor=donkelblo,   % Color for external links (e.g., emails) matching the desired text color
+	urlcolor=donkelblo,   % Color for external links (e.g., emails)
 	citecolor=gro,        % Color for citations
 	pdfborder={0 0 0}     % Remove the box around links
 }
-
-\newcommand{\gruppennumm}{Saint Jean Diddeleng}
-\newcommand{\gruppenemail}{lgsdudelange@pt.lu}
-\newcommand{\gruppenaddress}{Rue Mont St Jean Dudelange}
-\newcommand{\logodatei}{FDL_STJEAN}
 
 % Set up custom header and footer
 \pagestyle{fancy} % Use the fancyhdr style
@@ -37,7 +59,7 @@
 
 % Adjust the horizontal offset for the image in the header
 \fancyhead[L]{%
-	\makebox[0pt][l]{\hspace{-17mm}\includegraphics[width=9cm]{\logodatei}} % Adjust \hspace{-2cm} to move image left
+	\makebox[0pt][l]{\hspace{-17mm}\includegraphics[width=9cm]{\logodatei}} % Adjust \hspace to move image left or right
 }
 
 % Remove header and footer lines
@@ -52,13 +74,10 @@
 			\textbf{\textcolor{gro}{Lëtzebuerger Guiden a Scouten}}\\
 			\textbf{\textcolor{hellblo}{Grupp \gruppennumm}}\\
 			\textcolor{gro}{\gruppenaddress}\\
-			\textbf{\href{mailto:\gruppenemail}{Email: \gruppenemail}}\\ % Clickable email without blue box
+			\textbf{\href{mailto:\gruppenemail}{Email: \gruppenemail}} % Clickable email without blue box
 		}
 	}
 }
-
-
-
 
 % Add custom footer image centered in the footer
 \fancyfoot[C]{%
