@@ -4,15 +4,41 @@
 \usepackage{lgsbreif}
 
 \begin{document}
+	\color{gro}
 	
 	\section{Introduction}
 	This is some sample text with a wider text space. The margins have been adjusted to provide a wider text area.
 	
 	\lipsum[1-4] % Dummy text for illustration
 	
+	\subsection{Sub}
+	
+	\lipsum[1-2]
+	
+	\subsubsection{SubSub}
+	
+	\lipsum[1-2]
+	
 	\section{Another Section}
 	More sample text to demonstrate the layout. With the narrower margins, more content fits on a single line, making the document more compact.
 	
-	\lipsum[5-8] % More dummy text for illustration
+	\lipsum[5] % More dummy text for illustration
+	
+	\begin{itemize}
+		\item this
+		\item that 
+		\item and that
+		\begin{itemize}
+			\item subitem
+			\begin{itemize}
+				\item again!
+			\end{itemize}
+		\end{itemize}
+		\item normal item
+	\end{itemize}
+	
+	\subsection{SubSub}
+	
+	\lipsum[8-9]
 	
 \end{document}
